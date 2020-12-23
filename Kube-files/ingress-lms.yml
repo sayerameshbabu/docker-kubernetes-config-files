@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: lms-ingress
+spec:
+  rules:
+  - host: lms.sayerameshbabu.com
+    http:
+      paths:
+      - backend:
+          serviceName: clusterip-frontend
+          servicePort: 80

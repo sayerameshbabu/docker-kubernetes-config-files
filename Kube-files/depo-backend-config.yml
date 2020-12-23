@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: depo-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      dl: lms
+      app: backend
+  template:
+    metadata:
+      name: pod-backend
+      labels:
+        dl: lms
+        app: backend
+    spec:
+      containers:
+        - image: sayerameshbabu/lms-backend
+          name: container-backend
+          ports:
+            - containerPort: 3000

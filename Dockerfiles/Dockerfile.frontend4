@@ -1,0 +1,5 @@
+FROM sam  as build
+
+FROM nginx
+COPY --from=build /app/public/ /usr/share/nginx/html
+EXPOSE 80

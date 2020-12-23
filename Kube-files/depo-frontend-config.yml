@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-frontend
+spec:
+  selector:
+    matchLabels:
+      dl: lms
+      app: frontend
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: frontend
+        dl: lms
+      name: pod-frontend
+    spec:
+      containers:
+        - name: container-frontend
+          image: sayerameshbabu/dl-frontend
+          ports:
+          - containerPort: 80

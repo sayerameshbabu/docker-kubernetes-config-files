@@ -1,0 +1,11 @@
+FROM node as build
+RUN mkdir /app
+WORKDIR /app
+COPY . .
+RUN npm install -g @angular/cli
+RUN npm install
+RUN npm run build
+
+FROM nginx
+COPY --from=build /app/public/ /usr/share/nginx/html
+EXPOSE 80
